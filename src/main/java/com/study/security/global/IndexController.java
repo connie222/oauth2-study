@@ -16,8 +16,8 @@ public class IndexController {
 
     @GetMapping({"/", "/index"})
     public String index(HttpServletRequest request){
-        //String str = (String)httpSession.getAttribute("user");
-        System.out.println("dmdkdkdk?? ");
+        String str = (String)request.getSession().getAttribute("user");
+        System.out.println("dmdkdkdk?? "+str);
         return "index.html";
     }
 }
