@@ -10,3 +10,19 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  profiles:
+    include: oauth
+  mustache:
+    suffix: .html
+    prefix: classpath:/templates/
+  resources:
+    static-locations: "classpath:/resources/,classpath:/templates/,classpath:/static/,/"
+
+logging:
+  level:
+    web: DEBUG
+
+
+
+
+
