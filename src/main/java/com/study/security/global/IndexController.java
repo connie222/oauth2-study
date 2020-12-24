@@ -1,5 +1,6 @@
 package com.study.security.global;
 
+import com.study.security.auth.annotation.LoginUser;
 import com.study.security.auth.dto.SessionUser;
 import com.study.security.domain.member.domain.User;
 import lombok.RequiredArgsConstructor;
@@ -22,10 +23,10 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping({"/", "/index"})
-    public String index(ModelMap model){
-        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
-        /*model.addAttribute("data", sessionUser);
-        return model;*/
+    public String index(ModelMap model, @LoginUser SessionUser sessionUser){
+        /*SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+        * -> annotaion방식으로 변경
+        * */
         model.addAttribute("userName", sessionUser.getName());
         return "index";
     }
