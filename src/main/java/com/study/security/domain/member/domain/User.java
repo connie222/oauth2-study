@@ -40,13 +40,15 @@ public class User extends BaseTimeEntity {
     }
 
     public String getRoleKey() {
-        return this.role.getKey();
+       return this.role.getKey();
     }
 
     //entity의 데이터를 변경하면 실제 db정보가 변경
     public User update(String name, String picture){
         this.name = name;
         this.picture = picture;
+        this.createdDate = getCreatedDate();
+        this.modifiedDate = getModifiedDate();
         return this;
     }
 }

@@ -1,6 +1,7 @@
 package com.study.security.auth.service;
 
 import com.study.security.auth.dto.OAuthAttributes;
+import com.study.security.auth.dto.SessionUser;
 import com.study.security.domain.member.domain.User;
 import com.study.security.domain.member.domain.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -39,7 +40,12 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         User user = saveOrUpdate(oAuthAttributes);
 
         //세션에 정보저장
-        httpSession.setAttribute("user", "???왜안들어감???");
+        /*
+        * User엔티티를 세션에 저장하지 않는 이유는 직렬화를 구현하지 않았다는 에러가 나기 때문이다.
+        * 엔티티(User)는 직렬화 코드를 넣지 않는 것이 좋기 때문에
+        * dto로 직렬화가 가능하게끔 한번 감싸서 세션에 저장하는 것이 좋다.
+        * */
+        httpSession.setAttribute("user", new SessionUser(user));
 
         return new DefaultOAuth2User(
                 //지정된 객체만을 포함하고 있는 불변세트를 만듬!

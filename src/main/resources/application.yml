@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url:  jdbc:h2:tcp://localhost/~/test
+    url: jdbc:h2:tcp://localhost/~/test
     username: sa
     password:
     driver-class-name: org.h2.Driver
@@ -10,11 +10,13 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  mustache:
+    prefix: classpath:/templates/
+    suffix: .html
+
   profiles:
     include: oauth
-  mustache:
-    suffix: .html
-    prefix: classpath:/templates/
+
   resources:
     static-locations: "classpath:/resources/,classpath:/templates/,classpath:/static/,/"
 

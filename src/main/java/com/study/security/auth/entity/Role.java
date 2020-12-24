@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum Role {
     //security의 권한 코드에는 항상 ROLE_ 이 앞에 있어야 함
-    GUEST("ROlE_GUEST", "손님"),
+    GUEST("ROLE_GUEST", "손님"),
     USER("ROLE_USER", "일반 사용자");
 
 

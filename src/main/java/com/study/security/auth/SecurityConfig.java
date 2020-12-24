@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests() //Url별 권한 관리 시작
                 .antMatchers("/login").permitAll()// "/login"로 지정된 url은 전체 열람 권한(로그인 페이지는 모두 열람가능)
-                .antMatchers("/").hasRole(Role.USER.name()) //특정("/")url은 USER권한을 가진 사람만 >> USER권하을 어디서 설정,,?
+                .antMatchers("/").hasRole(Role.GUEST.name()) //특정("/")url은 권한(GUEST)을 가진 사람만
                 .anyRequest().authenticated() //나머지 url들은 모두 인증된 사용자만!
                 .and()
                 .oauth2Login() //oauth2 login start
